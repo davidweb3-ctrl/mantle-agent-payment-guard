@@ -28,36 +28,28 @@ const facts = {
 
 const slides = [
   titleSlide(),
+  definitionSlide(),
   problemSlide(),
+  solutionSlide(),
   screenshotSlide({
-    file: "slide-03-github.png",
-    duration: 19,
-    eyebrow: "Open source proof",
-    title: "Repository and build proof",
-    screenshot: join(captureDir, "github.png"),
-    link: "github.com/davidweb3-ctrl/mantle-agent-payment-guard",
-    bullets: [
-      "Public GitHub repo with Solidity contract and React frontend.",
-      "README includes architecture, deployed contract, and usage proof.",
-      "Built for The Turing Test Hackathon 2026 AI DevTools track.",
-    ],
-  }),
-  screenshotSlide({
-    file: "slide-04-frontend.png",
-    duration: 27,
+    file: "slide-05-frontend-form.png",
+    duration: 15,
     eyebrow: "Live public frontend",
-    title: "Payment intent review UI",
+    title: "The app captures the payment intent",
     screenshot: join(captureDir, "frontend.png"),
     link: "davidweb3-ctrl.github.io/mantle-agent-payment-guard",
     bullets: [
-      "The app shows agent, recipient, amount, token, and purpose.",
-      "An AI-style review produces a risk score and risk summary.",
-      "Users record a compact safety receipt on Mantle Sepolia.",
+      "The user connects a wallet on Mantle Sepolia.",
+      "The form shows agent, recipient, amount, token, and purpose.",
+      "This is the intent that will be reviewed before payment.",
     ],
   }),
+  aiReviewSlide(),
+  recordSlide(),
   receiptSlide(),
   onchainSlide(),
   useCaseSlide(),
+  packageSlide(),
   closingSlide(),
 ];
 
@@ -81,36 +73,49 @@ for (const slide of slides) {
   );
 }
 
-const listPath = join(outDir, "slides-v2.txt");
-writeFileSync(
-  listPath,
-  slides.map((slide) => `file '${join(slideDir, slide.file)}'\nduration ${slide.duration}`).join("\n") +
-    `\nfile '${join(slideDir, slides.at(-1).file)}'\n`,
-);
-
 const silentVideoPath = join(outDir, "silent-v2.mp4");
-execFileSync(
-  "ffmpeg",
-  [
-    "-y",
-    "-f",
-    "concat",
-    "-safe",
-    "0",
-    "-i",
-    listPath,
-    "-vf",
-    "scale=1920:1080,format=yuv420p",
-    "-r",
-    "30",
-    "-c:v",
-    "libx264",
-    "-pix_fmt",
-    "yuv420p",
-    silentVideoPath,
-  ],
-  { stdio: "inherit" },
-);
+const segmentDir = join(outDir, "segments");
+mkdirSync(segmentDir, { recursive: true });
+
+const segmentPaths = slides.map((slide, index) => {
+  const segmentPath = join(segmentDir, `${String(index + 1).padStart(2, "0")}-${slide.file.replace(".png", ".mp4")}`);
+  rmSync(segmentPath, { force: true });
+  execFileSync(
+    "ffmpeg",
+    [
+      "-y",
+      "-loop",
+      "1",
+      "-t",
+      String(slide.duration),
+      "-i",
+      join(slideDir, slide.file),
+      "-vf",
+      "scale=1920:1080,format=yuv420p",
+      "-r",
+      "30",
+      "-c:v",
+      "libx264",
+      "-preset",
+      "veryfast",
+      "-crf",
+      "20",
+      "-pix_fmt",
+      "yuv420p",
+      segmentPath,
+    ],
+    { stdio: "ignore" },
+  );
+  return segmentPath;
+});
+
+const listPath = join(outDir, "segments-v2.txt");
+writeFileSync(listPath, segmentPaths.map((file) => `file '${file}'`).join("\n") + "\n");
+
+rmSync(silentVideoPath, { force: true });
+execFileSync("ffmpeg", ["-y", "-f", "concat", "-safe", "0", "-i", listPath, "-c", "copy", silentVideoPath], {
+  stdio: "inherit",
+});
 
 execFileSync(
   "ffmpeg",
@@ -151,7 +156,7 @@ function titleSlide() {
   const logo = imageData(join(root, "public", "logo.png"));
   return {
     file: "slide-01-title.png",
-    duration: 11,
+    duration: 8,
     svg: page({
       eyebrow: "AI DevTools on Mantle",
       title: "Mantle Agent Payment Guard",
@@ -167,9 +172,27 @@ function titleSlide() {
   };
 }
 
+function definitionSlide() {
+  return {
+    file: "slide-02-definition.png",
+    duration: 14,
+    svg: page({
+      eyebrow: "Core idea",
+      title: "It does not move funds directly",
+      body: "Instead, it records proof that a user reviewed an AI-generated payment intent, saw a risk summary, and authorized the intent before payment execution.",
+      content: `
+        ${flowBox(120, 690, "AI intent", "The agent proposes a payment")}
+        ${flowBox(540, 690, "Risk prompt", "The user sees a review")}
+        ${flowBox(960, 690, "Approval", "The user explicitly confirms")}
+        ${flowBox(1380, 690, "Receipt", "The evidence is stored onchain")}
+      `,
+    }),
+  };
+}
+
 function problemSlide() {
   return {
-    file: "slide-02-problem.png",
+    file: "slide-03-problem.png",
     duration: 17,
     svg: page({
       eyebrow: "Problem",
@@ -185,10 +208,69 @@ function problemSlide() {
   };
 }
 
+function solutionSlide() {
+  return {
+    file: "slide-04-solution.png",
+    duration: 5,
+    svg: page({
+      eyebrow: "Solution",
+      title: "A pre-payment safety receipt",
+      body: "The demo turns the approval moment into a compact, verifiable onchain record.",
+      content: `
+        ${pill(120, 724, "AI payment intent")}
+        ${pill(504, 724, "Risk review")}
+        ${pill(792, 724, "User approval")}
+        ${pill(1120, 724, "Mantle receipt")}
+      `,
+    }),
+  };
+}
+
+function aiReviewSlide() {
+  return screenshotSlide({
+    file: "slide-06-ai-review.png",
+    duration: 16,
+    eyebrow: "AI review",
+    title: "Risk is shown before recording",
+    screenshot: join(captureDir, "frontend.png"),
+    link: "risk summary: low risk 10/100",
+    bullets: [
+      "The review panel summarizes the risk.",
+      "This demo is low risk because the amount is small.",
+      "The recipient format is valid and the purpose is ordinary.",
+    ],
+  });
+}
+
+function recordSlide() {
+  return {
+    file: "slide-07-record.png",
+    duration: 9,
+    svg: page({
+      eyebrow: "User action",
+      title: "Record safety receipt writes the reviewed intent",
+      body: "When the user clicks the button, the app calls the deployed Mantle Sepolia contract and stores the approval evidence.",
+      content: `
+        ${evidenceCard(120, 662, "Contract call", [
+          "function: recordPaymentIntent",
+          "network: Mantle Sepolia",
+          "caller: connected wallet",
+          "result: one receipt stored",
+        ])}
+        ${evidenceCard(1020, 662, "Why this matters", [
+          "The receipt is created before value moves",
+          "The risk prompt becomes auditable",
+          "The approval moment has durable evidence",
+        ])}
+      `,
+    }),
+  };
+}
+
 function receiptSlide() {
   return {
-    file: "slide-05-receipt.png",
-    duration: 22,
+    file: "slide-08-receipt.png",
+    duration: 14,
     svg: page({
       eyebrow: "What the transaction records",
       title: "This is not a payment. It is an approval receipt.",
@@ -215,8 +297,8 @@ function receiptSlide() {
 
 function onchainSlide() {
   return {
-    file: "slide-06-onchain.png",
-    duration: 23,
+    file: "slide-09-onchain.png",
+    duration: 13,
     svg: page({
       eyebrow: "Onchain evidence",
       title: "Mantle Sepolia deployment and first usage are complete",
@@ -233,8 +315,8 @@ function onchainSlide() {
 
 function useCaseSlide() {
   return {
-    file: "slide-07-usecases.png",
-    duration: 14,
+    file: "slide-10-usecases.png",
+    duration: 13,
     svg: page({
       eyebrow: "Why it matters",
       title: "A small safety primitive for agent payments",
@@ -249,10 +331,26 @@ function useCaseSlide() {
   };
 }
 
+function packageSlide() {
+  return screenshotSlide({
+    file: "slide-11-package.png",
+    duration: 9,
+    eyebrow: "Submission package",
+    title: "Open source and reproducible",
+    screenshot: join(captureDir, "github.png"),
+    link: "github.com/davidweb3-ctrl/mantle-agent-payment-guard",
+    bullets: [
+      "Public frontend and GitHub repository.",
+      "Deployed Mantle Sepolia contract.",
+      "Successful usage transaction and README evidence.",
+    ],
+  });
+}
+
 function closingSlide() {
   return {
-    file: "slide-08-close.png",
-    duration: 10,
+    file: "slide-12-close.png",
+    duration: 4,
     svg: page({
       eyebrow: "Submission package",
       title: "Open source, deployed, and used on Mantle Sepolia",

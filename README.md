@@ -73,7 +73,7 @@ https://davidweb3-ctrl.github.io/mantle-agent-payment-guard/
 https://github.com/davidweb3-ctrl/mantle-agent-payment-guard/raw/main/demo/mantle-agent-payment-guard-demo.mp4
 ```
 
-The video is about 2 minutes and 18 seconds long, uses real project screenshots plus the deployed Mantle Sepolia evidence, and explains the pre-payment safety receipt flow.
+The video is about 2 minutes and 16 seconds long, uses real project screenshots plus the deployed Mantle Sepolia evidence, and explains the pre-payment safety receipt flow. The latest render aligns each slide with the ElevenLabs narration sequence.
 
 The static frontend can be published with GitHub Pages:
 

@@ -33,7 +33,7 @@ Build a small, submit-ready DoraHacks BUIDL for The Turing Test Hackathon 2026 o
 - Deployment receipt: `status 1`, block `39163481`.
 - First usage tx: `0x7264d23c8e5c0a3e57559e9af64b81bfba42dd13f5c65ae3e13299101633c1fa`.
 - First usage receipt: `status 1`, block `39163828`, `receiptCount()` is `1`.
-- Demo video: `demo/mantle-agent-payment-guard-demo.mp4`, V2 regenerated with real project screenshots and ElevenLabs narration, about `138.40` seconds.
+- Demo video: `demo/mantle-agent-payment-guard-demo.mp4`, V3 regenerated with real project screenshots, ElevenLabs narration, and a narration-aligned slide timeline, about `136.49` seconds.
 - Public video URL: https://github.com/davidweb3-ctrl/mantle-agent-payment-guard/raw/main/demo/mantle-agent-payment-guard-demo.mp4
 
 ## Next Milestones
