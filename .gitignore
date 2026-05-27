@@ -6,5 +6,6 @@ broadcast/
 .env
 .env.local
 demo/rendered/
+demo/elevenlabs-narration.mp3
 *.log
 .DS_Store

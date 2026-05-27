@@ -73,7 +73,7 @@ https://davidweb3-ctrl.github.io/mantle-agent-payment-guard/
 https://github.com/davidweb3-ctrl/mantle-agent-payment-guard/raw/main/demo/mantle-agent-payment-guard-demo.mp4
 ```
 
-The video is about 2 minutes and 9 seconds long and explains the pre-payment safety receipt flow, the deployed Mantle Sepolia contract, and the first successful usage transaction.
+The video is about 2 minutes and 18 seconds long, uses real project screenshots plus the deployed Mantle Sepolia evidence, and explains the pre-payment safety receipt flow.
 
 The static frontend can be published with GitHub Pages:
 
@@ -167,7 +167,7 @@ Onchain receipt count:
 1
 ```
 
-Final DoraHacks submission should still wait until a 2+ minute demo video URL is available.
+This demo video is ready to use for the DoraHacks submission.
 
 ## Verification
 
