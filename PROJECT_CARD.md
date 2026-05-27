@@ -28,13 +28,15 @@ Build a small, submit-ready DoraHacks BUIDL for The Turing Test Hackathon 2026 o
 - Local verification: `forge test` / `npm run test:contracts` passed 4 tests; `npm run build` passed.
 - GitHub Pages deployment: published from `gh-pages`.
 - Mantle Sepolia deploy wallet: `0x593Eccd993d53f141194C8f85C9601560b8699D1`, funded with `10` test MNT on 2026-05-27.
+- Mantle Sepolia contract: `0x4965e045fBA701c8d98B445155e82B2E153e7335`.
+- Deployment tx: `0x45f245e4d916d0f4cf0f97438e21267d399059069a27f4cfe2a3dae405160dce`.
+- Deployment receipt: `status 1`, block `39163481`.
 
 ## Next Milestones
 
-1. Export the burner wallet private key locally and deploy the contract to Mantle Sepolia.
-2. Update README and frontend env with the deployed contract address.
-3. Record 2+ minute demo video.
-4. Add final GitHub, website, demo video, and contract links to DoraHacks.
+1. Use the public frontend to record one payment-safety receipt transaction.
+2. Record 2+ minute demo video.
+3. Add final GitHub, website, demo video, and contract links to DoraHacks.
 
 ## Notes
 

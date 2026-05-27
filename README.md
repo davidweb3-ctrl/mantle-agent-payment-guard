@@ -99,11 +99,43 @@ Then rebuild and publish the frontend.
 
 ## Current Deployment
 
-Public frontend is live. Mantle contract deployment is pending. The BUIDL draft is ready, but final DoraHacks submission should wait until this README includes:
+Public frontend:
 
-- deployed Mantle contract address;
-- explorer link;
-- demo video URL.
+```text
+https://davidweb3-ctrl.github.io/mantle-agent-payment-guard/
+```
+
+Mantle Sepolia contract:
+
+```text
+0x4965e045fBA701c8d98B445155e82B2E153e7335
+```
+
+Explorer:
+
+```text
+https://explorer.sepolia.mantle.xyz/address/0x4965e045fBA701c8d98B445155e82B2E153e7335
+```
+
+Deployment transaction:
+
+```text
+0x45f245e4d916d0f4cf0f97438e21267d399059069a27f4cfe2a3dae405160dce
+```
+
+Transaction explorer:
+
+```text
+https://explorer.sepolia.mantle.xyz/tx/0x45f245e4d916d0f4cf0f97438e21267d399059069a27f4cfe2a3dae405160dce
+```
+
+Deployment block:
+
+```text
+39163481
+```
+
+Final DoraHacks submission should still wait until a 2+ minute demo video URL is available.
 
 ## Verification
 
@@ -119,6 +151,7 @@ Result:
 - Foundry: 4 contract tests passed.
 - Vite: production build passed.
 - Browser check: local and GitHub Pages frontend loaded with live risk scoring.
+- Mantle Sepolia RPC check: deployed contract bytecode exists and deployment receipt has `status 1`.
 
 ## Hackathon Track
 
