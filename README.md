@@ -67,6 +67,14 @@ Current public demo:
 https://davidweb3-ctrl.github.io/mantle-agent-payment-guard/
 ```
 
+## Demo Video
+
+```text
+https://github.com/davidweb3-ctrl/mantle-agent-payment-guard/raw/main/demo/mantle-agent-payment-guard-demo.mp4
+```
+
+The video is about 2 minutes and 9 seconds long and explains the pre-payment safety receipt flow, the deployed Mantle Sepolia contract, and the first successful usage transaction.
+
 The static frontend can be published with GitHub Pages:
 
 ```bash

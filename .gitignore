@@ -5,6 +5,6 @@ out/
 broadcast/
 .env
 .env.local
+demo/rendered/
 *.log
 .DS_Store
-
