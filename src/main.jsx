@@ -117,7 +117,7 @@ function App() {
     <main>
       <section className="hero">
         <div className="brand">
-          <img src="/logo.png" alt="Mantle Agent Payment Guard logo" />
+          <img src={`${import.meta.env.BASE_URL}logo.png`} alt="Mantle Agent Payment Guard logo" />
           <div>
             <p className="eyebrow">AI DevTools on Mantle</p>
             <h1>Mantle Agent Payment Guard</h1>
@@ -218,4 +218,3 @@ function shortHash(hash) {
 }
 
 createRoot(document.getElementById("root")).render(<App />);
-

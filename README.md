@@ -59,6 +59,14 @@ npm run dev
 
 Open the printed Vite URL and test the local review flow.
 
+## Public Frontend
+
+The static frontend can be published with GitHub Pages:
+
+```bash
+npm run deploy:pages
+```
+
 ## Deploy To Mantle Sepolia
 
 Create `.env` from `.env.example`, then set:
