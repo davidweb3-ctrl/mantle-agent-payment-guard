@@ -61,6 +61,12 @@ Open the printed Vite URL and test the local review flow.
 
 ## Public Frontend
 
+Current public demo:
+
+```text
+https://davidweb3-ctrl.github.io/mantle-agent-payment-guard/
+```
+
 The static frontend can be published with GitHub Pages:
 
 ```bash
@@ -93,12 +99,26 @@ Then rebuild and publish the frontend.
 
 ## Current Deployment
 
-Pending. The BUIDL draft is ready, but final DoraHacks submission should wait until this README includes:
+Public frontend is live. Mantle contract deployment is pending. The BUIDL draft is ready, but final DoraHacks submission should wait until this README includes:
 
 - deployed Mantle contract address;
 - explorer link;
-- public frontend URL;
 - demo video URL.
+
+## Verification
+
+Local verification completed on 2026-05-27:
+
+```bash
+npm run test:contracts
+npm run build
+```
+
+Result:
+
+- Foundry: 4 contract tests passed.
+- Vite: production build passed.
+- Browser check: local and GitHub Pages frontend loaded with live risk scoring.
 
 ## Hackathon Track
 

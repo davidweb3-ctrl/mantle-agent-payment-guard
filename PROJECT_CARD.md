@@ -23,18 +23,20 @@ Build a small, submit-ready DoraHacks BUIDL for The Turing Test Hackathon 2026 o
 - Hacker registration: complete.
 - DoraHacks BUIDL draft: filled through final review screen.
 - Final review button: intentionally not clicked until repo, deployment, website, and demo video are ready.
+- GitHub repo: https://github.com/davidweb3-ctrl/mantle-agent-payment-guard
+- Public frontend: https://davidweb3-ctrl.github.io/mantle-agent-payment-guard/
+- Local verification: `forge test` / `npm run test:contracts` passed 4 tests; `npm run build` passed.
+- GitHub Pages deployment: published from `gh-pages`.
 
 ## Next Milestones
 
-1. Finish local contract and frontend verification.
-2. Deploy the contract to Mantle Sepolia.
-3. Publish frontend.
-4. Record 2+ minute demo video.
-5. Add final GitHub, website, demo video, and contract links to DoraHacks.
+1. Deploy the contract to Mantle Sepolia.
+2. Update README and frontend env with the deployed contract address.
+3. Record 2+ minute demo video.
+4. Add final GitHub, website, demo video, and contract links to DoraHacks.
 
 ## Notes
 
 - Do not spend mainnet funds without explicit approval.
 - Prefer Mantle Sepolia for proof unless the bounty requires mainnet.
 - Sync any status change back to the command center before reporting completion.
-
