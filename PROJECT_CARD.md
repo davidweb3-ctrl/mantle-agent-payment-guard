@@ -11,7 +11,7 @@ Command center:
 ## Status
 
 ```text
-ACTIVE
+SUBMITTED
 ```
 
 ## Goal
@@ -21,8 +21,7 @@ Build a small, submit-ready DoraHacks BUIDL for The Turing Test Hackathon 2026 o
 ## Current Submission Position
 
 - Hacker registration: complete.
-- DoraHacks BUIDL draft: filled through final review screen.
-- Final review button: intentionally not clicked until repo, deployment, website, and demo video are ready.
+- DoraHacks BUIDL submission: submitted for review on 2026-05-28.
 - GitHub repo: https://github.com/davidweb3-ctrl/mantle-agent-payment-guard
 - Public frontend: https://davidweb3-ctrl.github.io/mantle-agent-payment-guard/
 - Local verification: `forge test` / `npm run test:contracts` passed 4 tests; `npm run build` passed.
@@ -38,8 +37,8 @@ Build a small, submit-ready DoraHacks BUIDL for The Turing Test Hackathon 2026 o
 
 ## Next Milestones
 
-1. Add final GitHub, website, demo video, and contract links to DoraHacks.
-2. Submit DoraHacks BUIDL for review.
+1. Monitor DoraHacks review/status page.
+2. Edit only if a material correction, organizer request, or broken link appears before judging.
 
 ## Notes
 
