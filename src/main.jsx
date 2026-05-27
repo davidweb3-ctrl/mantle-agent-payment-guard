@@ -6,7 +6,7 @@ import { reviewPaymentIntent } from "./riskEngine.js";
 import "./styles.css";
 
 const DEFAULT_FORM = {
-  agent: "0x000000000000000000000000000000000000A617",
+  agent: "0x000000000000000000000000000000000000a617",
   recipient: "0x1111111111111111111111111111111111111111",
   recipientLabel: "Demo vendor invoice",
   amount: "12.5",
