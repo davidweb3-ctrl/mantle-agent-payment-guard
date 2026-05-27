@@ -135,6 +135,30 @@ Deployment block:
 39163481
 ```
 
+First usage transaction:
+
+```text
+0x7264d23c8e5c0a3e57559e9af64b81bfba42dd13f5c65ae3e13299101633c1fa
+```
+
+Usage transaction explorer:
+
+```text
+https://sepolia.mantlescan.xyz/tx/0x7264d23c8e5c0a3e57559e9af64b81bfba42dd13f5c65ae3e13299101633c1fa
+```
+
+Usage block:
+
+```text
+39163828
+```
+
+Onchain receipt count:
+
+```text
+1
+```
+
 Final DoraHacks submission should still wait until a 2+ minute demo video URL is available.
 
 ## Verification
@@ -152,6 +176,7 @@ Result:
 - Vite: production build passed.
 - Browser check: local and GitHub Pages frontend loaded with live risk scoring.
 - Mantle Sepolia RPC check: deployed contract bytecode exists and deployment receipt has `status 1`.
+- Mantle Sepolia usage check: first `recordPaymentIntent` transaction has `status 1`, emitted `PaymentIntentRecorded`, and `receiptCount()` returns `1`.
 
 ## Hackathon Track
 

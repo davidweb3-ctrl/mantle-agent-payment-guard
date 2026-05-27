@@ -31,12 +31,13 @@ Build a small, submit-ready DoraHacks BUIDL for The Turing Test Hackathon 2026 o
 - Mantle Sepolia contract: `0x4965e045fBA701c8d98B445155e82B2E153e7335`.
 - Deployment tx: `0x45f245e4d916d0f4cf0f97438e21267d399059069a27f4cfe2a3dae405160dce`.
 - Deployment receipt: `status 1`, block `39163481`.
+- First usage tx: `0x7264d23c8e5c0a3e57559e9af64b81bfba42dd13f5c65ae3e13299101633c1fa`.
+- First usage receipt: `status 1`, block `39163828`, `receiptCount()` is `1`.
 
 ## Next Milestones
 
-1. Use the public frontend to record one payment-safety receipt transaction.
-2. Record 2+ minute demo video.
-3. Add final GitHub, website, demo video, and contract links to DoraHacks.
+1. Record 2+ minute demo video.
+2. Add final GitHub, website, demo video, and contract links to DoraHacks.
 
 ## Notes
 
